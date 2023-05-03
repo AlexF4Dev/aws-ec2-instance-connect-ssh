@@ -49,7 +49,7 @@ runs:
 
         "${{ inputs.mssh-path }}" "${{ inputs.user-name }}@${{ inputs.instance-id }}" -r ${AWS_DEFAULT_REGION} bash --login <  $HOME/shell.sh >  action_output
 
-        tr  '\n' '|'  < action_output > single_lined_output
+        tr  '\n' '--'  < action_output > single_lined_output
      
         content=`cat single_lined_output`
         echo "result=$(cat single_lined_output)" >> $GITHUB_OUTPUT
