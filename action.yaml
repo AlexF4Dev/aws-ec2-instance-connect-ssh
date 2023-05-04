@@ -47,7 +47,7 @@ runs:
         echo "${{ inputs.command }}" > $HOME/shell.sh
         cat $HOME/shell.sh
 
-        "${{ inputs.mssh-path }}" "${{ inputs.user-name }}@${{ inputs.instance-id }}" -r ${AWS_DEFAULT_REGION} bash --login <  $HOME/shell.sh >  action_output
+        "${{ inputs.mssh-path }}" "${{ inputs.user-name }}@${{ inputs.instance-id }}" -r ${AWS_DEFAULT_REGION} bash --login <  $HOME/shell.sh | tee action_output
 
         cat action_output | tr  '\n' '#'  | tr  '\r' '#'  |  tr  '%' '#'  > single_lined_output
      
